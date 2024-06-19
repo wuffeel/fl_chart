@@ -427,6 +427,7 @@ class LineChartPainter extends AxisChartPainter<LineChartData> {
         lineEnd,
         _touchLinePaint,
         indicatorLine.dashArray,
+        radius: data.lineTouchData.borderRadius,
       );
 
       /// Draw the indicator dot

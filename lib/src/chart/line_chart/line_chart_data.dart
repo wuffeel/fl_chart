@@ -883,6 +883,7 @@ class LineTouchData extends FlTouchData<LineTouchResponse> with EquatableMixin {
     this.handleBuiltInTouches = true,
     this.getTouchLineStart = defaultGetTouchLineStart,
     this.getTouchLineEnd = defaultGetTouchLineEnd,
+    this.borderRadius,
   }) : super(
           enabled,
           touchCallback,
@@ -914,6 +915,8 @@ class LineTouchData extends FlTouchData<LineTouchResponse> with EquatableMixin {
   /// If line end is overlap with the dot, it will be automatically adjusted to the edge of the dot.
   final GetTouchLineY getTouchLineEnd;
 
+  final double? borderRadius;
+
   /// Copies current [LineTouchData] to a new [LineTouchData],
   /// and replaces provided values.
   LineTouchData copyWith({
@@ -928,6 +931,7 @@ class LineTouchData extends FlTouchData<LineTouchResponse> with EquatableMixin {
     GetTouchLineY? getTouchLineStart,
     GetTouchLineY? getTouchLineEnd,
     bool? handleBuiltInTouches,
+    double? borderRadius,
   }) {
     return LineTouchData(
       enabled: enabled ?? this.enabled,
@@ -942,6 +946,7 @@ class LineTouchData extends FlTouchData<LineTouchResponse> with EquatableMixin {
       getTouchLineStart: getTouchLineStart ?? this.getTouchLineStart,
       getTouchLineEnd: getTouchLineEnd ?? this.getTouchLineEnd,
       handleBuiltInTouches: handleBuiltInTouches ?? this.handleBuiltInTouches,
+      borderRadius: borderRadius ?? this.borderRadius,
     );
   }
 
@@ -959,6 +964,7 @@ class LineTouchData extends FlTouchData<LineTouchResponse> with EquatableMixin {
         handleBuiltInTouches,
         getTouchLineStart,
         getTouchLineEnd,
+        borderRadius,
       ];
 }
 

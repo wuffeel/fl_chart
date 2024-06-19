@@ -16,6 +16,7 @@ class CanvasWrapper {
     this.canvas,
     this.size,
   );
+
   final Canvas canvas;
   final Size size;
 
@@ -145,12 +146,24 @@ class CanvasWrapper {
     Offset from,
     Offset to,
     Paint painter,
-    List<int>? dashArray,
-  ) {
+    List<int>? dashArray, {
+    double? radius,
+  }) {
     var path = Path()
       ..moveTo(from.dx, from.dy)
       ..lineTo(to.dx, to.dy);
     path = path.toDashedPath(dashArray);
+    if (radius != null) {
+      path.addRRect(
+        RRect.fromLTRBR(
+          from.dx,
+          from.dy,
+          to.dx,
+          to.dy,
+          Radius.circular(radius),
+        ),
+      );
+    }
     drawPath(path, painter);
   }
 }
